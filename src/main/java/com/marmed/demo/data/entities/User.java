@@ -1,4 +1,4 @@
-package com.marmed.demo.model;
+package com.marmed.demo.data.entities;
 
 import java.math.BigInteger;
 import java.util.Set;
