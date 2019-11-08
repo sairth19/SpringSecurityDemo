@@ -19,11 +19,10 @@
 	</properties>
 
 	<dependencies>
-		<!-- 
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-security</artifactId>
-		</dependency>  -->
+		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
@@ -48,12 +47,11 @@
 				</exclusion>
 			</exclusions>
 		</dependency>
-		<!--
 		<dependency>
 			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-test</artifactId>
 			<scope>test</scope>
-		</dependency> -->
+		</dependency>
 	</dependencies>
 
 	<build>
@@ -64,5 +62,4 @@
 			</plugin>
 		</plugins>
 	</build>
-
 </project>
