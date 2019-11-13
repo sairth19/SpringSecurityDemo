@@ -1,0 +1,30 @@
+[
+	{
+		"name":"Usuarios",
+		"id":"users",
+		"description": "Menu de usuarios",
+		"type":"MENU",
+		"subitems": [
+			{
+				"name":"Crear Usuario",
+				"description": "Crear Usuario",
+				"id":"users.createUser",
+				"type":"LINK"
+			}
+		]
+	},
+	{
+		"name":"Roles",
+		"id":"roles",
+		"description": "Menu de Roles",
+		"type":"MENU",
+		"subitems": [
+			{
+				"name":"Crear Role",
+				"description": "Crear Role",
+				"id":"roles.createRole",
+				"type":"LINK"
+			}
+		]
+	}
+]

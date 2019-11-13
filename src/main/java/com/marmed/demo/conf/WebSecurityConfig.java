@@ -50,7 +50,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		http
 				// We don't need CSRF for this example
 				.csrf().disable().authorizeRequests().antMatchers("/authenticate").permitAll()
-				.anyRequest().authenticated().and().exceptionHandling()
+				.anyRequest().permitAll().and().exceptionHandling()
 				.authenticationEntryPoint(jwtAuthenticationEntryPoint).and().sessionManagement()
 				.sessionCreationPolicy(SessionCreationPolicy.STATELESS);
 		http.addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class);
