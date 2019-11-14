@@ -44,17 +44,18 @@ public class ResourceJSONRepository {
 		final Resource entity = new Resource();
 		if(parentId != null) {
 			Resource parent = new Resource();
-			parent.setId(parentId);
+			parent.setCode(parentId);
 			entity.setParent(parent);
 		}
 		
-		entity.setId(resource.getId());
+		entity.setCode(resource.getCode());
 		entity.setName(resource.getName());
 		entity.setDescription(resource.getDescription());
 		entity.setIconClass(resource.getIconClass());
 		entity.setType(resource.getType());
+		entity.setUrl(resource.getUrl());
 		if(resource.getSubitems() != null) {
-			Set<Resource> subitems = resource.getSubitems().stream().map(subitem -> dtoToEntity(subitem, resource.getId())).collect(Collectors.toSet());
+			Set<Resource> subitems = resource.getSubitems().stream().map(subitem -> dtoToEntity(subitem, resource.getCode())).collect(Collectors.toSet());
 			entity.setSubitems(subitems);
 		}
 		

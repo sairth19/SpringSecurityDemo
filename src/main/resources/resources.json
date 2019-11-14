@@ -1,29 +1,39 @@
 [
 	{
-		"name":"Usuarios",
-		"id":"users",
-		"description": "Menu de usuarios",
+		"name":"Main Menu",
+		"code":"main",
+		"description": "Menu de Principal",
 		"type":"MENU",
-		"subitems": [
+		"subitems":[
 			{
-				"name":"Crear Usuario",
-				"description": "Crear Usuario",
-				"id":"users.createUser",
-				"type":"LINK"
-			}
-		]
-	},
-	{
-		"name":"Roles",
-		"id":"roles",
-		"description": "Menu de Roles",
-		"type":"MENU",
-		"subitems": [
+				"name":"Seguridad",
+				"code":"security",
+				"description": "Gestion de Seguridad",
+				"type":"MENU",
+				"iconClass":"fa fa-lock",
+				"subitems": [
+					{
+						"name":"Usuarios",
+						"description": "Gestion de Usuarios",
+						"code":"usersManagement",
+						"type":"PAGE",
+						"url":"security/users"
+					},
+					{
+						"name":"Roles",
+						"description": "Gestion de Roles",
+						"code":"roleManagement",
+						"type":"PAGE",
+						"url":"security/roles"
+					}
+				]
+			},
 			{
-				"name":"Crear Role",
-				"description": "Crear Role",
-				"id":"roles.createRole",
-				"type":"LINK"
+				"name":"Parametros",
+				"code":"params",
+				"description": "Menu de Parametros",
+				"type":"MENU",
+				"iconClass":"fa fa-cog"
 			}
 		]
 	}

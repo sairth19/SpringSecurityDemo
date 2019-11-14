@@ -6,27 +6,44 @@ import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedAttributeNode;
+import javax.persistence.NamedEntityGraph;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "resources")
+@NamedEntityGraph(name = "Resource.menus",
+attributeNodes = @NamedAttributeNode("subitems")
+)
 public class Resource implements Serializable {
 	
 	private static final long serialVersionUID = 3128109918271826258L;
 	
-	private String id;
+	private String code;
 	private String name;
 	private String description;
 	private String type;
 	private String iconClass;
+	private String url;
 	private Resource parent;
 	private Set<Resource> subitems;
 	
 	public Resource() {}
 	
+	@Id
+	@Column(name = "code", unique = true,nullable = false)
+	public String getCode() {
+		return code;
+	}
+
+	public void setCode(String code) {
+		this.code = code;
+	}
+
 	@Column(name="name")
 	public String getName() {
 		return name;
@@ -43,16 +60,6 @@ public class Resource implements Serializable {
 	
 	public void setDescription(String description) {
 		this.description = description;
-	}
-	
-	@Id
-	@Column(name = "resource_id")
-	public String getId() {
-		return id;
-	}
-	
-	public void setId(String id) {
-		this.id = id;
 	}
 	
 	@Column(name = "type")
@@ -73,7 +80,16 @@ public class Resource implements Serializable {
 		this.iconClass = iconClass;
 	}
 	
-	@ManyToOne(cascade = CascadeType.PERSIST)
+	public String getUrl() {
+		return url;
+	}
+	
+	@Column(name = "url")
+	public void setUrl(String url) {
+		this.url = url;
+	}
+	
+	@ManyToOne(fetch = FetchType.LAZY)
 	public Resource getParent() {
 		return parent;
 	}
@@ -82,7 +98,7 @@ public class Resource implements Serializable {
 		this.parent = parent;
 	}
 
-	@OneToMany(mappedBy="parent", cascade = CascadeType.PERSIST)
+	@OneToMany(mappedBy="parent", cascade = CascadeType.MERGE, fetch = FetchType.LAZY)
 	public Set<Resource> getSubitems() {
 		return subitems;
 	}
@@ -93,7 +109,7 @@ public class Resource implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Resource [id=" + id + ", name=" + name + ", description=" + description + ", type=" + type
+		return "Resource [code=" + code + ", name=" + name + ", description=" + description + ", type=" + type
 				+ ", iconClass=" + iconClass + ", parent=" + parent + ", subitems=" + subitems + "]";
 	}
 	
